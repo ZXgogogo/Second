@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录，注册</title>
+		<link rel="stylesheet" href="meizu_z.css">
+	</head>
+
+	<body>
+		<header id="header">
+			<div class="top">
+				<img src="images/logo_3.png" class="lf">
+				<span class="rt"><a href="#">登录丨注册</a></span>
+			</div>
+		</header>
+		<section id="section">
+			<div class="container">
+				<div class="zc">
+					<div class="lf" id="lf">手机号码注册</div>
+					<b></b>
+					<div class="rt" id="rt">扫一扫注册</div>
+				</div>
+                <form action="1.php" id="form">
+				<div class="phone">
+					<input type="tel" name="utel"  placeholder="请输入手机号" id="utel" required
+                    pattern="^(\+86|0086)?\s*1[34578]\d{9}$">
+                    <span id="span">请输入正确的手机号码</span>
+				</div>
+				<div class="word">
+					<input type="text"  value="输入验证码" id="number" required name="number"><span id="word"></span>
+                    <span id="active">!验证码错误,请刷新重试</span>
+                </div>
+				<div class="password">
+                	<input type="password" id="pwd" name="pwd" required pattern="^[0-9A-Za-z]{6,16}$" placeholder="输入密码">
+                    <span id="pasd">请输入6-16位字母数字</span>
+                </div>
+				<div class="txt">
+                	<input type="checkbox" checked name="chk">&nbsp;&nbsp;&nbsp;我已阅读并接受&nbsp;&nbsp;&nbsp;<a href="#">《Flyme服务协议条款》</a>
+                </div>
+				<div class="submit">
+                	<input type="submit" id="sub" value="注册">
+                </div>
+                </form>
+                <div id="picture">
+                	<img src="indexWXCode_a645982.png">
+                </div>
+			</div>
+		</section>
+		<footer id="footer">
+        	<div class="container" style="overflow:hidden">
+            	<p class="lf">关于魅族丨工作机会丨联系我们丨法律声明丨简体中文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服热线：400-788-333</p>
+                <span class="lf">在线客服</span>
+                <div class="rt"></div>
+            </div>
+            <p style="width:980px;margin:0 auto;margin-top:20px;">&copy;2016 Meizu Telecom Equipment Co,,粤IP备13003602号-2粤B2-20160717营业执照&nbsp;&nbsp;粤公网安备4404910296009号</p>
+        </footer>
+        <script>
+        	utel.onmousedown=function(){
+					var span=document.getElementById("span");
+					span.style.display="block";
+				}
+			utel.onmouseout=function(){
+					var span=document.getElementById("span");
+					span.style.display="none";
+				}
+			pwd.onmousedown=function(){
+					var pasd=document.getElementById("pasd");
+					pasd.style.display="block";
+				}
+			pwd.onmouseout=function(){
+					var pasd=document.getElementById("pasd");
+					pasd.style.display="none";
+				}
+			lf.onclick=function(){
+				var form=document.getElementById("form");
+				var pic=document.getElementById("picture");
+				form.style.display="block";
+				pic.style.display="none";
+				this.style.color="#0cbbef";
+				rt.style.color="#999";
+			}
+			rt.onclick=function(){
+				var form=document.getElementById("form");
+				var pic=document.getElementById("picture");
+				form.style.display="none";
+				pic.style.display="block";
+				lf.style.color="#999";
+				this.style.color="#0cbbef";
+			}
+			var chars=[];
+			for(var i=48;i<=57;i++){
+					chars.push(String.fromCharCode(i));
+				}
+			for(var i=65;i<=90;i++){
+					chars.push(String.fromCharCode(i));
+				}
+			for(var i=97;i<=122;i++){
+					chars.push(String.fromCharCode(i));
+				}
+			console.log(String(chars));
+			var code="";
+			for(var i=1;i<=4;i++){
+				var c = Math.floor(Math.random()*62);
+				code+=chars[c];
+			}
+			console.log(code);
+			var word=document.getElementById("word");
+			word.innerHTML=code;
+			sub.onclick=function(){
+					if(word.innerHTML.toLowerCase()!=number.value.toLowerCase()){
+							this.setAttribute("type","disabled");
+							active.style.display="block";
+						}
+			}
+        </script>
+	</body>
+</html>
